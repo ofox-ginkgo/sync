@@ -247,7 +247,7 @@ get_twrp_minimal_manifest() {
   echo "-- Done.";
 
   echo "-- Syncing the $TWRP_BRANCH minimal manifest repo ...";
-  repo sync;
+  repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags;
   [ "$?" != "0" ] && {
    abort "-- Failed to Sync the minimal manifest repo. Quitting.";
   }
